@@ -7,10 +7,9 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
-import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.airbnb.epoxy.EpoxyRecyclerView
-import com.rootdown.dev.smbc.data.model.remote.RemoteSourceSpoonacular
+import com.rootdown.dev.smbc.data.model.remote.RemoteSourceComplexSearch
 import com.rootdown.dev.smbc.databinding.FragmentSearchListBinding
 import com.rootdown.dev.smbc.recipe
 import com.rootdown.dev.smbc.ui.feature_recipe_details.DetailsViewModel
@@ -34,37 +33,53 @@ class RecipeListFragment : Fragment() {
     ): View {
         binding = FragmentSearchListBinding.inflate(inflater)
         val epoxyView: EpoxyRecyclerView = binding.rvTask
-        vm.recipeResult.observe(viewLifecycleOwner) {
+        vm.recipeResultComplex.observe(viewLifecycleOwner) {
             Log.w("XXX", it.toString())
             it?.let {
                 val x = it.getContent().data
-
                     val y = it.getContent()
                     Log.w("$$$", y.toString())
-                    val ls: List<RemoteSourceSpoonacular.Result?> = y.data?.results ?: listOf(RemoteSourceSpoonacular.Result(id = 1, image = "", name = "Error"))
+                    val ls: List<RemoteSourceComplexSearch.Result?> = (y.data?.results ?: listOf(RemoteSourceComplexSearch.Result(
+                        calories = 12,
+                        carbs = "error",
+                        fat = "error",
+                        id = 1,
+                        image = "err",
+                        imageType = "err",
+                        protein = "err",
+                        title = "err"
+                    )))
                     setupEpoxy(ls,epoxyView)
             }
         }
         return binding.root
     }
 
-    private fun setupEpoxy(result: List<RemoteSourceSpoonacular.Result?>, epoxy: EpoxyRecyclerView){
+    private fun setupEpoxy(result: List<RemoteSourceComplexSearch.Result?>, epoxy: EpoxyRecyclerView){
         val xLs = result
         vm.predaciteNum = xLs.size
         //xLs.first()?.image
-
-        var lsEpoxy: List<RemoteSourceSpoonacular.Result> = listOf()
+        var lsEpoxy: List<RemoteSourceComplexSearch.Result> = listOf()
         if(result.isEmpty()){
-            lsEpoxy = listOf(RemoteSourceSpoonacular.Result(id = 1, image = "", name = "Error"))
+            lsEpoxy = listOf(RemoteSourceComplexSearch.Result(
+                calories = 12,
+                carbs = "error",
+                fat = "error",
+                id = 1,
+                image = "err",
+                imageType = "err",
+                protein = "err",
+                title = "err"
+            ))
         } else {
-            lsEpoxy = result as List<RemoteSourceSpoonacular.Result>
+            lsEpoxy = result as List<RemoteSourceComplexSearch.Result>
         }
         epoxy.withModels {
             lsEpoxy.forEach { xx ->
                 vm.makeIds(vm.predaciteNum)
                 recipe {
                     id(vm.count)
-                    vm(xx)
+                    xx(xx)
                     clickListener { x ->
                         Log.w("CCC", xx.toString())
                         vmDetail.setCurrentSelection(xx)

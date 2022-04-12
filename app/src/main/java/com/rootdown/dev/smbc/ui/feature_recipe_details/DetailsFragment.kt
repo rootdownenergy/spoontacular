@@ -41,7 +41,7 @@ class DetailsFragment : Fragment() {
         val img: ImageView = binding.detailImgId
         vm.resultCurr.observe(viewLifecycleOwner, Observer {
             val it_detail_img = it.image
-            val url = "https://spoonacular.com/recipeImages/$it_detail_img"
+            val url = "$it_detail_img"
             Log.w("url", url)
             if(it_detail_img!!.isNotEmpty()){
                 Glide.with(this)
@@ -49,8 +49,7 @@ class DetailsFragment : Fragment() {
                     .diskCacheStrategy(DiskCacheStrategy.ALL)
                     .into(img)
             }
-            binding.detailNameId.text = it.name
-            binding.detailId.text = it.id.toString()
+            binding.detailNameId.text = it.title
         })
         return view
     }
