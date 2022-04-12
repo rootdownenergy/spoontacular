@@ -21,14 +21,9 @@ class RecipeListViewModel @Inject constructor(
     var count = 0
     var predaciteNum: Int = 0
 
-    private var currId by Delegates.notNull<Int>()
-    private lateinit var xx: RemoteSourceSpoonacular.Result
-    private val _resultCurr = MutableLiveData<RemoteSourceSpoonacular.Result>()
-    val resultCurr: LiveData<RemoteSourceSpoonacular.Result> = _resultCurr
     private val _recipeResult = MutableLiveData<Event<Resource<RemoteSourceSpoonacular>>>()
     val recipeResult: LiveData<Event<Resource<RemoteSourceSpoonacular>>> = _recipeResult
     init {
-        Log.w("VMVM", "In secondary constructor")
         getSearchRecipe()
     }
     private fun getSearchRecipe(){
@@ -44,11 +39,5 @@ class RecipeListViewModel @Inject constructor(
         count++
         if(count<=i){makeIds(predaciteNum)}
     }
-    fun setId(id: Int){
-        currId = id
-    }
-    fun setCurrentSelection(curr: RemoteSourceSpoonacular.Result){
-        xx = curr
-        _resultCurr.postValue(xx)
-    }
+
 }

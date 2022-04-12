@@ -16,6 +16,6 @@
     </fragment>
     <fragment
         android:id="@+id/detailsFragment"
-        android:name="com.rootdown.dev.smbc.ui.feature_recipe_list.DetailsFragment"
+        android:name="com.rootdown.dev.smbc.ui.feature_recipe_details.DetailsFragment"
         android:label="DetailsFragment" />
 </navigation>

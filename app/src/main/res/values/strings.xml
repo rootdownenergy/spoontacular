@@ -3,4 +3,6 @@
     <string name="saved_recipes">saved recipes</string>
     <string name="htw">HTW</string>
     <string name="smbc_htw">SMBC HTW</string>
+    <string name="submit">submit</string>
+    <string name="recipe_image">recipe image</string>
 </resources>
