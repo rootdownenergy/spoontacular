@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_nav_core"
+    app:startDestination="@id/recipeListFragment">
+
+    <fragment
+        android:id="@+id/recipeListFragment"
+        android:name="com.rootdown.dev.smbc.ui.feature_recipe_list.RecipeListFragment"
+        android:label="RecipeListFragment"
+        tools:layout="@layout/fragment_search_list" >
+        <action
+            android:id="@+id/action_recipeListFragment_to_detailsFragment"
+            app:destination="@id/detailsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/detailsFragment"
+        android:name="com.rootdown.dev.smbc.ui.feature_recipe_list.DetailsFragment"
+        android:label="DetailsFragment" />
+</navigation>
