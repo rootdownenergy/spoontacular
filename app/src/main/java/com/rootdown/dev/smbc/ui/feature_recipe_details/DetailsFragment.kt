@@ -38,8 +38,15 @@ class DetailsFragment : Fragment() {
         Log.w("VVV", "In oncreateview")
         binding = FragmentDetailsBinding.inflate(inflater, container, false)
         val view = binding.root
-        val img: ImageView = binding.detailImgId
+        val img: ImageView = binding.recipeImage
         vm.resultCurr.observe(viewLifecycleOwner, Observer {
+            val calories = it.calories.toString()
+            val fat = it.fat
+            val protein = it.protein
+            val carbData = "No Carb Data"
+            val fatData = "No Fat Data"
+            val proteinData = "No Protein Data"
+            val calorieData = "No Calorie Data"
             val it_detail_img = it.image
             val url = "$it_detail_img"
             Log.w("url", url)
@@ -49,7 +56,27 @@ class DetailsFragment : Fragment() {
                     .diskCacheStrategy(DiskCacheStrategy.ALL)
                     .into(img)
             }
-            binding.detailNameId.text = it.title
+            binding.detailTitle.text = it.title
+            if(it.carbs.isNullOrBlank()){
+                binding.detailCarbs.text = carbData
+            } else {
+                binding.detailCarbs.text = it.carbs
+            }
+            if(it.calories == null){
+                binding.detailCalories.text = calorieData
+            } else {
+                binding.detailCalories.text = it.calories.toString()
+            }
+            if(it.fat.isNullOrBlank()){
+                binding.detailFat.text = fatData
+            } else {
+                binding.detailFat.text = it.fat
+            }
+            if(it.protein.isNullOrBlank()){
+                binding.detailProtein.text = proteinData
+            } else {
+                binding.detailProtein.text = it.protein
+            }
         })
         return view
     }

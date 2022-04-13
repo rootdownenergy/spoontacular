@@ -194,4 +194,5 @@ dependencies {
     kapt 'com.github.bumptech.glide:compiler:4.13.0'
     implementation "org.jetbrains.kotlin:kotlin-reflect:1.6.20"
 
+
 }

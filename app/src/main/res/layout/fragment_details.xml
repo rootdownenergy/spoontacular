@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:app="http://schemas.android.com/apk/res-auto"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/details_coordinator_layout"
@@ -8,74 +8,113 @@
     tools:context="ui.feature_recipe_details.DetailsFragment">
 
     <com.google.android.material.card.MaterialCardView
-        android:id="@+id/card_one"
+        android:id="@+id/card_image"
         android:layout_margin="8dp"
         app:cardCornerRadius="16dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent">
-
-        <androidx.appcompat.widget.LinearLayoutCompat
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/recipe_image"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="horizontal"
-            android:padding="16dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.0">
-
-            <androidx.appcompat.widget.AppCompatImageView
-                android:id="@+id/detail_img_id"
-                android:layout_width="100dp"
-                android:layout_height="100dp"
-                android:adjustViewBounds="false"
-                android:cropToPadding="false"
-                android:scaleType="centerCrop"
-                app:layout_constraintDimensionRatio="h,4:3"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                tools:srcCompat="@tools:sample/backgrounds/scenic"
-                android:contentDescription="@string/recipe_image" />
-
-
-        </androidx.appcompat.widget.LinearLayoutCompat>
-
-
+            android:layout_height="250dp" />
     </com.google.android.material.card.MaterialCardView>
+
     <com.google.android.material.card.MaterialCardView
         android:id="@+id/card_two"
         android:layout_margin="8dp"
         app:cardCornerRadius="16dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/card_one"
-        app:layout_constraintStart_toStartOf="@+id/card_one">
-        <androidx.appcompat.widget.LinearLayoutCompat
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
+        app:layout_constraintTop_toBottomOf="@id/card_image">
             <com.google.android.material.textview.MaterialTextView
-                android:id="@+id/detail_name_id"
+                android:id="@+id/detail_title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:padding="8dp"
                 android:textColor="@color/colorPrimary"
                 android:textStyle="bold"
-                tools:text="Title header" />
-            <com.google.android.material.textview.MaterialTextView
-                android:id="@+id/detail_carbs"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:padding="8dp"
-                android:textColor="@color/colorPrimary"
-                android:textStyle="bold"
-                tools:text="Carbs" />
+                tools:text="Recipe Title" />
 
-        </androidx.appcompat.widget.LinearLayoutCompat>
     </com.google.android.material.card.MaterialCardView>
 
-</androidx.coordinatorlayout.widget.CoordinatorLayout>
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/card_carbs"
+        android:layout_margin="8dp"
+        app:cardCornerRadius="16dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/card_two">
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/detail_carbs"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="8dp"
+            android:textColor="@color/colorPrimary"
+            android:textStyle="bold"
+            tools:text="Carbs" />
+
+    </com.google.android.material.card.MaterialCardView>
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/card_fat"
+        android:layout_margin="8dp"
+        app:cardCornerRadius="16dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/card_carbs">
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/detail_fat"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="8dp"
+            android:textColor="@color/colorPrimary"
+            android:textStyle="bold"
+            tools:text="Fat" />
+
+    </com.google.android.material.card.MaterialCardView>
+
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/card_protein"
+        android:layout_margin="8dp"
+        app:cardCornerRadius="16dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/card_fat">
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/detail_protein"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="8dp"
+            android:textColor="@color/colorPrimary"
+            android:textStyle="bold"
+            tools:text="Protein" />
+
+    </com.google.android.material.card.MaterialCardView>
+
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/card_calories"
+        android:layout_margin="8dp"
+        app:cardCornerRadius="16dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/card_protein">
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/detail_calories"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="8dp"
+            android:textColor="@color/colorPrimary"
+            android:textStyle="bold"
+            tools:text="Calories" />
+
+    </com.google.android.material.card.MaterialCardView>
+
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

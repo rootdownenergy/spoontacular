@@ -5,4 +5,9 @@
     <string name="smbc_htw">SMBC HTW</string>
     <string name="submit">submit</string>
     <string name="recipe_image">recipe image</string>
+    <string name="switch_x">Switch</string>
+    <string name="action_settings">action settings</string>
+    <string name="light_mode">Light Mode</string>
+    <string name="medium_mode">Medium Mode</string>
+    <string name="dark_mode">Dark Mode</string>
 </resources>
