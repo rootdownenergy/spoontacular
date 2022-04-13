@@ -7,9 +7,9 @@ import retrofit2.http.GET
 
 
 interface ApiService {
-    @GET("/food/ingredients/search?apiKey=76a84ec229a14bb995183a1c8c2ed8da&query=rice")
+    @GET("/food/ingredients/search?apiKey=&query=rice")
     suspend fun getRiceRecipes() : Response<RemoteSourceSpoonacular>
 
-    @GET("/recipes/complexSearch?apiKey=76a84ec229a14bb995183a1c8c2ed8da&includeIngredients=rice")
+    @GET("/recipes/complexSearch?apiKey=&includeIngredients=rice")
     suspend fun getRiceRecipesComplex() : Response<RemoteSourceComplexSearch>
 }
